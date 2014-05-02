@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Yellow AutoHona | Home</title>
+		<link type="text/css" rel="stylesheet" href="css/demo.css" />
+		<link type="text/css" rel="stylesheet" href="css/jquery.mmenu.all.css" />		
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<link rel="stylesheet" href="jquery.mobile/jquery.mobile-1.1.0.min.css" />
+	    <!-- <script src="jquery.mobile/jquery-1.7.2.min"></script> -->
+		<!-- <script src="jquery.mobile/jquery.mobile-1.1.0.min.js"></script> -->
+		<script type="text/javascript" src="js/jquery.mmenu.js"></script>
+		
+		<script type="text/javascript" src="cordova-1.6.1.js"></script>
+		
+		<script type="text/javascript">
+			$(function() {
+				var $menu = $('nav#menu');
+				$menu.mmenu();				
+			});
+			
+		</script>
+
+
+	
+	
+	
+	
+	
+			
+
+</head>
+	<body>
+		<div id="page">
+			<div id="header" class="mm-fixed-top">
+			<input type="submit" value="back" onclick="window.open('autolist.html')">
+				Yellow Autohona
+			</div>
+			
+			<div id="content">
+	        <h1>welcome to page 3</h1>
+				<div id="reviews" style="top:0;bottom:0;right:0;left:0;margin:0 auto;padding:10px; background-color: #555;width: 80%;height:100%;">
+				     <div id="star_rating" style="color:white">
+				              rating
+				              <select id="rate">
+				              <option>1</option>
+				              <option>2</option>
+				              <option>3</option>
+				              <option>4</option>
+				              <option>5</option>
+				              </select>				     
+				     </div>
+				     <div id="user_review"><input type="text" placeholder="write a review..."></div>
+				     <div id="rate_review_btn"><input type="submit" value="Rate & Review"></div>
+				</div>
+				<div id="driver_review_tab">
+				     reviews..........
+				</div>
+			</div>
+			<div id="footer" class="mm-fixed-bottom">
+				&copy Yellow AutoHona Pvt. Ltd. Hydearabad
+			</div>
+		</div>
+	</body>
+</html>

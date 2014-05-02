@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Yellow AutoHona | Home</title>
+		<link type="text/css" rel="stylesheet" href="css/demo.css" />
+		<link type="text/css" rel="stylesheet" href="css/jquery.mmenu.all.css" />		
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<link rel="stylesheet" href="jquery.mobile/jquery.mobile-1.1.0.min.css" />
+	    <!-- <script src="jquery.mobile/jquery-1.7.2.min"></script> -->
+		<!-- <script src="jquery.mobile/jquery.mobile-1.1.0.min.js"></script> -->
+		<script type="text/javascript" src="js/jquery.mmenu.js"></script>
+		<script type="text/javascript" src="js/getautolist.js"></script>
+		<script type="text/javascript" src="cordova-1.6.0.js"></script>
+		
+		<script type="text/javascript">
+			$(function() {
+				var $menu = $('nav#menu');
+				$menu.mmenu();
+			});
+		</script>
+	</head>
+	<body>
+		<div id="page">
+			<div id="header" class="mm-fixed-top">
+				<a href="#menu"></a>
+				Yellow Autohona
+			</div>
+			
+			<div id="content">
+	        <h1>List of Autos</h1>
+	        <div id="AutoDetailsList" style="width:100%; height:100%; background-color: black; color:white;">
+	         HELLO TAGORE THIS IS FROM PAGE 2
+	        </div>
+				
+			</div>
+			<div id="footer" class="mm-fixed-bottom">
+				&copy Yellow AutoHona Pvt. Ltd. Hydearabad
+			</div>
+			<nav id="menu">
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="#">Auto List</a></li>
+					<li><a href="page2.html">Page 2</a></li>
+					<li><a href="page3.html">Page 3</a></li>
+					
+				</ul>
+			</nav>
+		</div>
+	</body>
+</html>

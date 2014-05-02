@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Yellow AutoHona | Home</title>
+<link type="text/css" rel="stylesheet" href="css/demo.css" />
+<link type="text/css" rel="stylesheet" href="css/jquery.mmenu.all.css" />		
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+<script type="text/javascript" src="js/jquery.raty.min.js"></script>                   
+<script type="text/javascript" src="js/jquery.mmenu.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"></script>
+<script type="text/javascript" charset="utf-8" src="cdv-plugin-fb-connect.js"></script>
+<script type="text/javascript" charset="utf-8" src="facebook_js_sdk.js"></script>
+<script type="text/javascript" src="js/reviews.js"></script>
+<script type="text/javascript">
+	$(function() {
+		var $menu = $('nav#menu');
+		$menu.mmenu();
+	});
+</script>
+</head>
+<body onload="popupDiv2()">
+	<div id="page">
+		<div id="header" class="mm-fixed-top">
+			<input type="submit" value="back" onclick="window.open('autolist.html')">
+			Yellow Autohona
+		</div>
+		<div id="content">
+	        <h1>welcome to page 3</h1>
+			<div id="reviews" style="top:0;bottom:0;right:0;left:0;margin:0 auto;padding:10px; background-color: #555;width: 80%;height:100%;">
+				<div style="color:white">
+					 Auto ID:<input id="autoID" type="text" value="1009">
+				</div>
+				<div id="star_rating" style="color:white">
+				    rating
+				    <select id="rate">
+				    <option>1</option>
+				    <option>2</option>
+				    <option>3</option>
+				    <option>4</option>
+				    <option>5</option>
+				    </select>				     
+				</div>
+				<div id="user_review"><input id="user_comment" type="text" placeholder="write a review..."></div>
+				<a href="#" class="topopup"><button>Rate & Review</button></a>
+			</div>
+			<div id="driver_review_tab">reviews..........</div>
+		</div>
+		<!---popup window-->
+		<div id="toPopup"> 
+			<div class="close"></div>
+			<span class="ecs_tooltip">Press Esc to close <span class="arrow"></span></span>
+			<div id="popup_content"> <!--your content start-->
+				<div id="login">
+					<div><button onclick="fbInit()">Connect with Facebook</button></div>
+					<div><button>Connect with Google</button></div>
+					<h1>OR USE OTHER EMAIL</h1>
+					<button id="loginBtn">Login</button>
+					<button id="signinBtn">singin</button>
+				</div>
+				<div id="registration">
+					<form>
+						<label>First Name</label>
+						<input type="text" id="regFirstName" /><br />
+						<label>Last Name</label>
+						<input type="text" id="regLastName" /><br />
+						<label>Email Address</label>
+						<input type="email" id="regEmail" /><br />
+						<label>Password</label>
+						<input type="password" id="regPwd" /><br />
+						<label>Mobile No.</label>
+						<input type="text" id="regMobile" /><br />
+						<div> <button id="regUser">Register</button></div>
+					</form>
+				</div>
+				<div id="userLoginForm">
+					<form>
+						<label>Email/User Name</label>
+						<input type="text" id="loginEmailUserName" />
+						<br />
+						<label>Password</label>
+						<input type="password" id="loginPwd" />
+						<br />
+						<input type="checkbox" id="check">Remember me on this computer</input>
+						<br />
+						<button id="loginBack">Back</button>
+						<button id="loginLogin">Login</button>
+						<a href="#" id="loginForgotPwd">Forgot password ?</a>
+					</form>
+				</div>
+				<div id="PwdReset">
+					<form>
+						<label>Email</label>
+						<input type="text" />
+						<br />
+						<button id="pwdResetBack">Back</button>
+						<button id="pwdResetSendMail">SendMail</button>
+					</form>
+				</div>
+			</div> <!--your content end-->
+		</div> <!--toPopup end-->
+		<div class="loader"></div>
+		<div id="backgroundPopup"></div>
+		<div id="footer" class="mm-fixed-bottom">
+				&copy Yellow AutoHona Pvt. Ltd. Hydearabad
+		</div>
+	</div>
+</body>
+</html>

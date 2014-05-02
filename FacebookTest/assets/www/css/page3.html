@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+	<button onclick="login()">Login</button>
+	<div id="data">loading ...</div>
+
+	<!--<script src="http://localhost:8080/target/target-script-min.js#anonymous"></script>-->
+	<div id="fb-root"></div>
+	<!-- cordova -->
+	<script src="cordova-1.6.1.js"></script>
+	<!-- cordova facebook plugin -->
+	<script src="cdv-plugin-fb-connect.js"></script>
+	<!-- facebook js sdk -->
+	<script src="facebook-js-sdk.js"></script>
+
+	<script>
+	<!-- These are the notifications that are displayed to the user through pop-ups if the above JS files does not exist in the same directory-->
+		if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined'))
+			alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
+		if (typeof CDV == 'undefined')
+			alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
+		if (typeof FB == 'undefined')
+			alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
+
+		FB.Event.subscribe('auth.login', function(response) {
+			alert('auth.login event');
+		});
+
+		FB.Event.subscribe('auth.logout', function(response) {
+			alert('auth.logout event');
+		});
+
+		FB.Event.subscribe('auth.sessionChange', function(response) {
+			alert('auth.sessionChange event');
+		});
+
+		FB.Event.subscribe('auth.statusChange', function(response) {
+			alert('auth.statusChange event');
+		});
+
+		/*function getSession() {
+		    alert("session: " + JSON.stringify(FB.getSession()));
+		}
+		 */
+
+		function login() {
+			FB.login(function(response) {
+				if (response.session) {
+					alert('logged in');
+
+				} else {
+					alert('not logged in');
+
+					FB.api('/me', function(response) {
+
+						if (response.error) {
+							alert('There is an error');
+						} else {
+							alert(response.name);
+							var data = document.getElementById('data');
+							//data.innerHTML = "Name :" + response.name + "<br/> Email :"+response.emai";
+						}
+					});
+
+				}
+			}, {
+				scope : "email"
+			});
+		}
+
+		document
+				.addEventListener(
+						'deviceready',
+						function() {
+							try {
+								alert('Device is ready! Make sure you set your app_id below this alert.');
+								FB.init({
+									appId : "1411111299155411",
+									nativeInterface : CDV.FB,
+									useCachedDialogs : false
+								});
+								document.getElementById('data').innerHTML = "";
+							} catch (e) {
+								alert(e);
+							}
+						}, false);
+	</script>
+	<div id="log"></div>
+</body>
+</html>
