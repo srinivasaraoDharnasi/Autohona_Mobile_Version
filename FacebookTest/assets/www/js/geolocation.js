@@ -22,6 +22,10 @@ var wsuccess = function(pos) {
               map: map
           });
           $("#input_pac1").val(results[1].formatted_address);
+		  localStorage.setItem("source",$(input_pac1).val());
+		  if(localStorage.getItem("source")!=""){
+		    localStorage.setItem("sourceCount",1);
+		  }
           infowindow.setContent(results[1].formatted_address);
           infowindow.open(map, marker);
         }

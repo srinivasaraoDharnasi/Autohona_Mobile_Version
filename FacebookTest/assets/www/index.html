@@ -5,10 +5,8 @@
 		<link type="text/css" rel="stylesheet" href="css/demo.css" />
 		<link type="text/css" rel="stylesheet" href="css/jquery.mmenu.all.css" />		
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-		<link rel="stylesheet" href="jquery.mobile/jquery.mobile-1.1.0.min.css" />
-	    <!-- <script src="jquery.mobile/jquery-1.7.2.min"></script> -->
-		<!-- <script src="jquery.mobile/jquery.mobile-1.1.0.min.js"></script> -->
-		<script type="text/javascript" src="js/jquery.mmenu.js"></script>
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+	    <script type="text/javascript" src="js/jquery.mmenu.js"></script>
 		<script type="text/javascript" src="js/app.js"></script>
 		<script type="text/javascript" src="js/getautolist.js"></script>
 		<script type="text/javascript" src="cordova-1.6.0.js"></script>
@@ -18,6 +16,8 @@
 			$(function() {
 				var $menu = $('nav#menu');
 				$menu.mmenu();
+				localStorage.setItem("destination","");
+				localStorage.setItem("source","");
 			});
 		</script>
 	</head>
@@ -30,10 +30,9 @@
 			
 			<div id="content">
 			<div style="z-index: 100; width: 97%;top: 10%;left: 0px;position: absolute; background-color: #333;  padding: 5px 5px; color: white; /* text-align:center */">
-				<input type="text" placeholder="source" id="input_pac1" style="width: 100%" autocomplete="off">
-				<input type="text" placeholder="destination" id="input_pac2" style="width: 100%" autocomplete="off">
+				<input type="text" placeholder="source" id="input_pac1" style="width: 100%" autocomplete="off" >
+				<input type="text" placeholder="destination" id="input_pac2" style="width: 100%" autocomplete="off" >
 				<input type="submit" value="Go" id="go_btn">
-				<input type='checkbox' value='true' id='checkkBoxId'> Round Trip
 				</div>
 				<div id='map-canvas' style=" height: 100%; position: absolute; top: 40px; bottom: -200px; left: 0; right: 0; z-index: 0;"></div> 
 				
@@ -46,9 +45,6 @@
 			 <li><a href="priorbooking.html">Prior Booking</a></li>
 			 </ul>
 			</nav>
-			<!-- <nav id="menu" style="overflow-y: scroll; -webkit-overflow-scrolling: touch;">
-				<ul id="foo"></ul>
-			</nav> -->
 		</div>
 	</body>
 </html>

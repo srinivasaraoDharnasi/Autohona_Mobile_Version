@@ -1,12 +1,20 @@
 function getAutoList(){
-	$.ajax({
-		url:"http://autohonatest.meximas.com/service/getAutoData.php?type=autolist",
-		cache : false,
-		dataType : "json",
-		success:function(result){		
-			//alert(result);
+    if((localStorage.getItem("source")=="")&&(localStorage.getItem("destination")=="")){
+			alert("Must enter Source and destination");
+			window.open("index.html");
+	}else if((localStorage.getItem("source")==localStorage.getItem("destination"))){
+	       alert("Source and destination are same");  	
+		   window.open("index.html");
+	}else if(localStorage.getItem("sourceCount")!=1&&localStorage.getItem("destCount")!=1){
+	     alert("Please provide valid address");
+		 window.open("index.html");
+	}else{
+	    $.ajax({
+			url:"http://autohonatest.meximas.com/service/getAutoData.php?type=autolist",
+			cache : false,
+			dataType : "json",
+			success:function(result){		
 			var data = result[0].data;
-			//alert(data);
 			autolist =data;
 			data.sort(function(a, b) {
 				return parseFloat(a.dist) - parseFloat(b.dist);
@@ -31,8 +39,7 @@ function getAutoList(){
 
 			});
 			$('#foo').on('click', '#rate_me', function(){
-				  // alert("clicked on rate me");
-				   window.open("page3.html");
+				  window.open("page3.html");
 				});
 			/*Srinivas Added for Rating */$('span.stars').stars();
 			pointingAutos();
@@ -40,11 +47,11 @@ function getAutoList(){
 		error : function(error) {
 			alert("error in getting data"+status);
 		}
-	});
+		});
+	}
 }
 function popupDiv1(id){
 localStorage.setItem("selectedId",id+"");
-popupDiv2();
 }
 
 

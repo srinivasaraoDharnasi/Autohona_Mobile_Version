@@ -12,63 +12,8 @@
 		<script src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
 		<script type="text/javascript" src="jquery.timepicker.js"></script>
 		<link rel="stylesheet" type="text/css" href="jquery.timepicker.css" />
-		
-		
-		<script type="text/javascript">
-			$(function() {
-				var $menu = $('nav#menu');
-				$menu.mmenu();
-			});
-		// auto complete search boxes	
-		window.onload=function(){
-		var input = document.getElementById('searchSource');
-		var input2 = document.getElementById('searchDestination');
-		var options = {componentRestrictions: {country: 'in'}};
-		new google.maps.places.Autocomplete(input, options);
-		new google.maps.places.Autocomplete(input2, options);
-		}
-		
-		//time picker
-		$(function() {
-          $('#setTimeExample').timepicker();
-          $('#setTimeButton').on('click', function (){
-			$('#setTimeExample').timepicker('setTime', new Date());
-          });
-        });		
-		//Date Picker	
-		$(function() {
-			$( "#datepicker" ).datepicker();
-		});
-		$(document).ready(function() {
-		$('#bookbut').click(function() {
-			alert('Enter book function');
-			var date = $("#datepicker").val();
-			alert(date);
-			//var d = (new Date(dateandtime)).getTime();
-			var time = $("#setTimeExample").val();
-			alert(time);
-			var srcloc, destloc, roundtrip;
-			srcloc = $("#searchSource").val();
-			alert(srcloc);
-			destloc = $("#searchDestination").val();
-			alert(destloc);
-			var tripflag=$('#roundCheck').is(':checked') ? "Y" : "N" ;
-			alert(tripflag);
-			var urll = "http://autohonatest.meximas.com/service/setAppointment.php?userId=49&fromLoc="+srcloc+"&toLoc="+destloc+"&dAt="+date+"&tripFlag="+tripflag;
-			console.log(urll);
-			$.ajax({
-				url : urll,
-				cache : false,
-				dataType : "json",
-				success : function(dataAll) {
-					alert(dataAll.message);
-				},
-				error : function(error) {}
-			});
-		});
-		});
-		</script>
-</head>
+		<script type="text/javascript" src="js/book.js"></script>	
+	</head>
 <body>
 <div id="page">
 	<div id="header" class="mm-fixed-top">
@@ -76,21 +21,21 @@
 	</div>
 	<div id="content">
 		<div><h1>Enter Address:</h1>
-			<input id="searchSource" placeholder="Source" type="text" width="100%">
-			<input id="searchDestination" placeholder="Destination" type="text" width="100%">
+			<input id="searchSource" placeholder="Source" type="text" width="100%" >
+			<input id="searchDestination" placeholder="Destination" type="text" width="100%" >
 		</div>
 		<div><h3>Select Date:</h3>
-			<input type="text" id="datepicker">
+			<input type="text" id="datepicker" >
 		</div>
 		<div><h1>Set Time</h1>
 			<input id="setTimeExample" type="text" class="time" />
 			<button id="setTimeButton">Set current time</button>
 		</div>
 		<div>
-			<input id="roundCheck" type="checkbox">Roundtrip ?</input>
+			<input id="roundCheck" type="checkbox" />Roundtrip ?
 		</div>
-		<div style="margin-top:2%;"><input type="submit" value="ckeck Availability"></div>
-		<div id="available_autos" style="margin-top:1%;">Available : 10
+		
+		<div id="available_autos" style="margin-top:1%;">
 			<input id="bookbut" type="submit" value="Book"/>
 		</div>
 	</div>

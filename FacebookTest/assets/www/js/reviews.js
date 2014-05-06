@@ -25,12 +25,13 @@ function fbInit(){
  }
 function profile() {
 	FB.api('/me',function(response) {
-		//alert(response.name);
+		//alert(response.first_name);
 		//alert(response.id);
+		//alert(response.last_name);
 		$("#login").hide();
 		$("#registration").show();				
-		$("#regFirstName").val(response.name);
-		$("#regLastName").val(response.id);
+		$("#regFirstName").val(response.first_name);
+		$("#regLastName").val(response.last_name);
 	});
 }
 function login() {
@@ -54,6 +55,7 @@ document.getElementById("autoID").value=auto_id;
 		dataType : "json",
 		success : function(data) {
 		var reviewslist=data[0].data;
+		
 		//console.log(data[0].data);
 		$.each(reviewslist,function(index,value){
 			$("#driver_review_tab").append(
@@ -76,6 +78,10 @@ document.getElementById("autoID").value=auto_id;
 
 jQuery(function($) {
 
+$("#regUserBack").click(function() {
+	$("#login").show();		
+	$("#registration").hide();
+});
 $("#signinBtn").click(function() {	
 	$("#login").hide();
 	$("#registration").show();
@@ -141,23 +147,27 @@ var url;
 	var phone=$("#regMobile").val();
 	//url="http://autohonatest.meximas.com/service/getAutoData.php?type=register&firstName="+fname+"&lastName="+lname+"&pwd="+pwd+"&phone="+phone+"&email="+email;
 	//console.log(url);
-	$.ajax({
-		url: "http://autohonatest.meximas.com/service/getAutoData.php?type=register&firstName="+fname+"&lastName="+lname+"&pwd="+pwd+"&phone="+phone+"&email="+email,
-		dataType:"json",
-		success:function(){
-			alert("saved successfully");
-		},
-		error:function(){
-			alert("data input error");
-	    }
-	});
+	//$.ajax({
+		//url: "http://autohonatest.meximas.com/service/getAutoData.php?type=register&firstName="+fname+"&lastName="+lname+"&pwd="+pwd+"&phone="+phone+"&email="+email,
+		//dataType:"json",
+		//success:function(){
+		//	alert("saved successfully");
+	//	},
+	//	error:function(){
+		//	alert("data input error");
+	  //  }
+	//});
+	//if(){
+	
+	
+	//}
 	function validateEmail(){
 		var emailID = email;
 		atpos = emailID.indexOf("@");
 		dotpos = emailID.lastIndexOf(".");
 		if (atpos < 1 || ( dotpos - atpos < 2 )){
 			alert("Please enter correct email ID")
-			document.myForm.EMail.focus() ;
+			$("#regEmail").focus();			
 			return false;
 		}
 		return( true );
@@ -169,11 +179,12 @@ var url;
 			return true;
 		}else{
 			alert("Not a valid Phone Number");
+			$("#regMobile").focus();
 			return false;
 		}
 	}
-	if(fname.length<20&&fname.length!=""&&fname.length>4){
-		if(lname.length<20&&lname.length!=""&&lname.length>4){
+	if(fname.length<20&&fname.length!=""){
+		if(lname.length<20&&lname.length!=""){
 			var ret = validateEmail();
 			if( ret == true ){
 				if(pwd.length<20&&pwd.length!=""&&pwd.length>8){
@@ -184,31 +195,41 @@ var url;
 							dataType:"json",
 							success:function(){
 								alert("saved successfully");
+								$("#registration").hide();
 							},
 							error:function(){
-								alert("data input error");
+								
 							}
 						});
 					}
 				}else{
 					alert("password must be 8 - 12 characters!!");
+					$("#regPwd").focus();
 				}
 			}
 		}else{
-			alert("enter correct Second name should not exceed 20 characters")
+			alert("enter correct last name should not exceed 20 characters")
+			$("#regLastName").focus();
 		}
 	}else{
 		alert("enter correct First name should not exceed 20 characters")
+		$("#regFirstName").focus();
 	}
 });
 
 $("a.topopup").click(function() {
+	var cmt=$("#user_comment").val(); 
+    if(cmt==""){
+		alert("please enter comment");
+	}else{
 		$("#toPopup").fadeIn(0500); 
 		$("#backgroundPopup").css("opacity", "0.7"); 
 		$("#registration").hide();
 		$("#userLoginForm").hide();
 		$("#login").show();
 		$("#PwdReset").hide();
+	}
+		
 });
 $("div.close").click(function() {
 	$("#toPopup").fadeOut("normal");  
